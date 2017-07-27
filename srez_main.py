@@ -13,6 +13,8 @@ import tensorflow as tf
 FLAGS = tf.app.flags.FLAGS
 
 # Configuration (alphabetically)
+tf.app.flags.DEFINE_integer('epoch', 10,
+                            "Number of epochs.")
 tf.app.flags.DEFINE_integer('batch_size', 16,
                             "Number of samples per batch.")
 
