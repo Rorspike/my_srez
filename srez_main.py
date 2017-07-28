@@ -13,8 +13,6 @@ import tensorflow as tf
 FLAGS = tf.app.flags.FLAGS
 
 # Configuration (alphabetically)
-tf.app.flags.DEFINE_integer('epoch', 10,
-                            "Number of epochs.")
 tf.app.flags.DEFINE_integer('batch_size', 16,
                             "Number of samples per batch.")
 
@@ -63,7 +61,7 @@ tf.app.flags.DEFINE_integer('test_vectors', 16,
 tf.app.flags.DEFINE_string('train_dir', 'train',
                            "Output folder where training logs are dumped.")
 
-tf.app.flags.DEFINE_integer('train_time', 20,
+tf.app.flags.DEFINE_integer('train_time', 60,
                             "Time in minutes to train the model")
 
 def prepare_dirs(delete_train_dir=False):
