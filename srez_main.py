@@ -113,7 +113,7 @@ def _demo():
     sess, summary_writer = setup_tensorflow()
 
     # Prepare directories
-    filenames = prepare_dirs(delete_train_dir=False)
+    filenames = random.choice(prepare_dirs(delete_train_dir=False))
 
     # Setup async input queues
     features, labels = srez_input.setup_inputs(sess, filenames)
