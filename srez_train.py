@@ -66,9 +66,9 @@ def train_model(train_data):
     td.sess.run(tf.initialize_all_variables())
 
     lrval       = FLAGS.learning_rate_start
-    start_time  = time.time()
-    done  = False
-    batch = 0
+#     start_time  = time.time()
+#     done  = False
+#     batch = 0
 
     assert FLAGS.learning_rate_half_life % 10 == 0
 
@@ -76,6 +76,7 @@ def train_model(train_data):
     test_feature, test_label = td.sess.run([td.test_features, td.test_labels])
     
     for ii in range(FLAGS.epoch):
+        start_time  = time.time()
         done = False
         batch = 0
         while not done:
