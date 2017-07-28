@@ -146,8 +146,10 @@ def _train():
     all_filenames = prepare_dirs(delete_train_dir=True)
 
     # Separate training and test sets
-    train_filenames = all_filenames[:-FLAGS.test_vectors]
-    test_filenames  = all_filenames[-FLAGS.test_vectors:]
+#     train_filenames = all_filenames[:-FLAGS.test_vectors]
+#     test_filenames  = all_filenames[-FLAGS.test_vectors:]
+    train_filenames = all_filenames
+    test_filenames  = random.sample(all_filenames, 5)
 
     # TBD: Maybe download dataset here
 
