@@ -76,6 +76,7 @@ def train_model(train_data):
     test_feature, test_label = td.sess.run([td.test_features, td.test_labels])
     
     for ii in range(FLAGS.epoch):
+        done = False
         while not done:
             batch += 1
             gene_loss = disc_real_loss = disc_fake_loss = -1.234
