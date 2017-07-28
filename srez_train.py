@@ -77,6 +77,7 @@ def train_model(train_data):
     
     for ii in range(FLAGS.epoch):
         done = False
+        batch = 0
         while not done:
             batch += 1
             gene_loss = disc_real_loss = disc_fake_loss = -1.234
