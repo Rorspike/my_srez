@@ -106,34 +106,40 @@ def setup_tensorflow():
 
 def _demo():
     # Load checkpoint
-#     if not tf.gfile.IsDirectory(FLAGS.checkpoint_dir):
-#         raise FileNotFoundError("Could not find folder `%s'" % (FLAGS.checkpoint_dir,))
+    if not tf.gfile.IsDirectory(FLAGS.checkpoint_dir):
+        raise FileNotFoundError("Could not find folder `%s'" % (FLAGS.checkpoint_dir,))
 
-#     # Setup global tensorflow state
-#     sess, summary_writer = setup_tensorflow()
+    # Setup global tensorflow state
+    sess, summary_writer = setup_tensorflow()
 
-#     # Prepare directories
-#     filenames = [random.choice(prepare_dirs(delete_train_dir=False))]
+    # Prepare directories
+    filenames = [random.choice(prepare_dirs(delete_train_dir=False))]
 
-#     # Setup async input queues
-#     features, labels = srez_input.setup_inputs(sess, filenames)
+    # Setup async input queues
+    features, labels = srez_input.setup_inputs(sess, filenames)
 
-#     # Create and initialize model
-#     [gene_minput, gene_moutput,
-#      gene_output, gene_var_list,
-#      disc_real_output, disc_fake_output, disc_var_list] = \
-#             srez_model.create_model(sess, features, labels)
+    # Create and initialize model
+    [gene_minput, gene_moutput,
+     gene_output, gene_var_list,
+     disc_real_output, disc_fake_output, disc_var_list] = \
+            srez_model.create_model(sess, features, labels)
 
-#     # Restore variables from checkpoint
+    # Restore variables from checkpoint
 #     saver = tf.train.Saver()
 #     filename = 'checkpoint_new.txt'
 #     filename = os.path.join(FLAGS.checkpoint_dir, filename)
 #     saver.restore(sess, filename)
 
-#     # Execute demo
-#     train_data = TrainData(locals())
-#     srez_demo.demo1(train_data)
-    srez_demo.demo1()
+
+    filename = 'checkpoint_new.txt'
+    filename = os.path.join(FLAGS.checkpoint_dir, filename)
+    saver = tf.train.import_meta_graph('checkpoint_new.txt.meta')
+    saver.restore(sess,tf.train.latest_checkpoint('./'))
+
+    # Execute demo
+    train_data = TrainData(locals())
+    srez_demo.demo1(train_data)
+#     srez_demo.demo1()
 
 class TrainData(object):
     def __init__(self, dictionary):
