@@ -131,9 +131,9 @@ def _demo():
 #     saver.restore(sess, filename)
 
 
-    filename = 'checkpoint_new.txt'
+    filename = 'checkpoint_new.txt.meta'
     filename = os.path.join(FLAGS.checkpoint_dir, filename)
-    saver = tf.train.import_meta_graph('checkpoint_new.txt.meta')
+    saver = tf.train.import_meta_graph(filename)
     saver.restore(sess,tf.train.latest_checkpoint('./'))
 
     # Execute demo
